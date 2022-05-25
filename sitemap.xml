@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://redhat-scholars.github.io/managed-kafka-workshop/managed-kafka-workshop/main/01-getting-started.html</loc>
-<lastmod>2022-05-25T09:45:08.310Z</lastmod>
+<lastmod>2022-05-25T09:50:23.025Z</lastmod>
 </url>
 <url>
 <loc>https://redhat-scholars.github.io/managed-kafka-workshop/managed-kafka-workshop/main/02-connect-streams-apache-kafka.html</loc>
-<lastmod>2022-05-25T09:45:08.310Z</lastmod>
+<lastmod>2022-05-25T09:50:23.025Z</lastmod>
 </url>
 <url>
 <loc>https://redhat-scholars.github.io/managed-kafka-workshop/managed-kafka-workshop/main/03-bind-quarkus-application.html</loc>
-<lastmod>2022-05-25T09:45:08.310Z</lastmod>
+<lastmod>2022-05-25T09:50:23.025Z</lastmod>
 </url>
 <url>
 <loc>https://redhat-scholars.github.io/managed-kafka-workshop/managed-kafka-workshop/main/index.html</loc>
-<lastmod>2022-05-25T09:45:08.310Z</lastmod>
+<lastmod>2022-05-25T09:50:23.025Z</lastmod>
 </url>
 </urlset>
