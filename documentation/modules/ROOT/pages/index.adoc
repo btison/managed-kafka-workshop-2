@@ -14,9 +14,7 @@ In this workshop you will:
 * Create and inspect a Kafka instance using OpenShift Streams for Apache Kafka.
 * Create a service account to connect to the Kafka instance.
 * Create a topic in the kafka instance.
-* Use link:https://github.com/edenhill/kcat[kcat] to produce and consume messages for the Kafka instance.
-* Use the Red Hat OpenShift Application Services (RHOAS) Operator and CLI to connect the OpenShift Streams for Apache Kafka to an OpenShift cluster.
-* Bind a Quarkus application to OpenShift Streams for Apache Kafka using the Red Hat OpenShift Application Services CLI.
+* Bind a Quarkus application to OpenShift Streams for Apache Kafka using the OpenShift Service Binding.
 
 This workshop uses the link:https://developers.redhat.com/developer-sandbox[Developer Sandbox for Red Hat OpenShift], which provides you with a private OpenShift environment in a shared, multi-tenant OpenShift cluster that is pre-configured with a set of developer tools. This also means you won't have to install anything on your workstation in order to run this workshop.
 
@@ -32,22 +30,12 @@ This workshop uses the link:https://developers.redhat.com/developer-sandbox[Deve
 * xref:01-getting-started.adoc#topic[Create a Kafka Topic]
 
 [.tile]
-.xref:02-using-kcat.adoc[2. Using kcat with Kafka instances in Streams for Apache Kafka]
-* xref:02-using-kcat.adoc#devsandboxaccess[Get access to the Developer Sandbox]
-* xref:02-using-kcat.adoc#toolsimage[Install the tools image on Developer Sandbox]
-* xref:02-using-kcat.adoc#kcatconnect[Configuring kcat to connect to a Kafka instance]
-* xref:02-using-kcat.adoc#kcatproduce[Producing messages in kcat]
-* xref:02-using-kcat.adoc#kcatconsume[Consuming messages in kcat]
+.xref:02-connect-streams-apache-kafka.adoc[2. Connecting OpenShift Streams for Apache Kafka]
+* xref:02-connect-streams-apache-kafka.adoc#devsandboxaccess[Get access to the Developer Sandbox]
+* xref:02-connect-streams-apache-kafka.adoc#connectopenshiftstreams[Connect the OpenShift Streams for Apache Kafka instance to your OpenShift project]
 
 [.tile]
-.xref:03-connect-streams-apache-kafka.adoc[3. Connecting OpenShift Streams for Apache Kafka]
-* xref:03-connect-streams-apache-kafka.adoc#toolsimage[Install the tools image on Developer Sandbox]
-* xref:03-connect-streams-apache-kafka.adoc#connectopenshiftstreams[Connect the OpenShift Streams for Apache Kafka instance to your OpenShift project]
-* xref:03-connect-streams-apache-kafka.adoc#inspectkafkadetails[Inspect the Kafka connection details]
-
-[.tile]
-.xref:04-bind-quarkus-application.adoc[4. Binding a Quarkus application to OpenShift Streams for Apache Kafka]
-* xref:04-bind-quarkus-application.adoc#deployquarkusapplication[Deploying a Quarkus application]
-* xref:04-bind-quarkus-application.adoc#createkafkatopic[Creating a Kafka topic for your Quarkus application]
-* xref:04-bind-quarkus-application.adoc#toolsimage[Install the tools image on Developer Sandbox]
-* xref:04-bind-quarkus-application.adoc#bindquarkusapp[Binding your Quarkus application to Streams for Apache Kafka]
+.xref:03-bind-quarkus-application.adoc[3. Binding a Quarkus application to OpenShift Streams for Apache Kafka]
+* xref:03-bind-quarkus-application.adoc#deployquarkusproducerapplication[Deploying a Quarkus producer application]
+* xref:03-bind-quarkus-application.adoc#bindquarkusapp[Binding your Quarkus application to Streams for Apache Kafka]
+* xref:03-bind-quarkus-application.adoc#deployquarkusconsumerapplication[Deploying and binding a Quarkus consumer application]
