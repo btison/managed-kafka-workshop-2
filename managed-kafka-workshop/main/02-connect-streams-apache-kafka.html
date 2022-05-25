@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Connecting OpenShift Streams for Apache Kafka :: Red Hat OpenShift Streams for Apache Kafka Workshop</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/managed-kafka-workshop/managed-kafka-workshop/main/02-connect-streams-apache-kafka.html">
+    <link rel="prev" href="01-getting-started.html">
+    <link rel="next" href="03-bind-quarkus-application.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/managed-kafka-workshop">Red Hat OpenShift Streams for Apache Kafka Workshop</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://developers.redhat.com/ebooks/" target="_blank">Books</a>
+        <a class="navbar-item" href="https://developers.redhat.com/cheatsheets/" target="_blank">Cheat Sheets</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/kubernetes-tutorial/" target="_blank">Kubernetes</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/istio-tutorial/" target="_blank">Istio</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/quarkus-tutorial/" target="_blank">Quarkus</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/knative-tutorial/" target="_blank">Knative</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/tekton-tutorial/" target="_blank">Tekton</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="managed-kafka-workshop" data-version="main">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html"></a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-getting-started.html">1. Getting Started with OpenShift Streams for Apache Kafka</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-getting-started.html#redhataccount">Create a Red Hat Account</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-getting-started.html#kafka">Provision a Kafka instance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-getting-started.html#serviceaccount">Create a Service Account</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-getting-started.html#serviceaccountpermissions">Set Permissions for a Service Account</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-getting-started.html#topic">Create a Kafka Topic</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-connect-streams-apache-kafka.html">2. Connecting OpenShift Streams for Apache Kafka</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#devsandboxaccess">Get access to the Developer Sandbox</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#connectopenshiftstreams">Connect the OpenShift Streams for Apache Kafka instance to your OpenShift project</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-bind-quarkus-application.html">3. Binding a Quarkus application to OpenShift Streams for Apache Kafka</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-bind-quarkus-application.html#deployquarkusproducerapplication">Deploying a Quarkus producer application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-bind-quarkus-application.html#bindquarkusapp">Binding your Quarkus application to Streams for Apache Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-bind-quarkus-application.html#deployquarkusconsumerapplication">Deploying and binding a Quarkus consumer application</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Red Hat OpenShift Streams for Apache Kafka Workshop</a></li>
+    <li><a href="02-connect-streams-apache-kafka.html">2. Connecting OpenShift Streams for Apache Kafka</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/btison/managed-kafka-workshop-bofa/edit/main/documentation/modules/ROOT/pages/02-connect-streams-apache-kafka.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Connecting OpenShift Streams for Apache Kafka</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As a developer, you can connect your OpenShift Streams for Apache Kafka cloud service to your OpenShift cluster using the Red Hat OpenShift Application Services (RHOAS) operator.</p>
+</div>
+<div class="paragraph">
+<p>The Red Hat OpenShift Application Services operator allows you to represent Red Hat Cloud Services as first class citizens in your OpenShift environment. This enables you to work and integrate with these services using standard OpenShift/Kubernetes features and APIs. The Red Hat OpenShift Application Services operator is installed and available in your sandbox OpenShift Environment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="devsandboxaccess"><a class="anchor" href="#devsandboxaccess"></a>Get access to the Developer Sandbox</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://developers.redhat.com/developer-sandbox">Developer Sandbox for Red Hat OpenShift</a> provides you with a private OpenShift environment in a shared, multi-tenant OpenShift cluster that is pre-configured with a set of developer tools.</p>
+</div>
+<div class="paragraph">
+<p>You can spin up and access your Developer Sandbox with your Red Hat account (the same account you used to create an OpenShift Streams for Apache Kafka instance).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a browser window, go to <a href="https://developers.redhat.com/developer-sandbox/get-started">developers.redhat.com/developer-sandbox/get-started</a>.</p>
+</li>
+<li>
+<p>Click the <strong>Launch your Developer Sandbox for Red Hat OpenShift</strong> button.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/devsandbox-launch.png" alt="devsandbox launch">
+</div>
+</div>
+</li>
+<li>
+<p>If required, log in in with your Red Hat account username and password.</p>
+</li>
+<li>
+<p>If this is the first time you use the Developer Sandbox, your account needs to be set up. This includes a phone verification step to reduce the creation of fraudulent accounts. After this step it will take a couple of seconds to set up the sandbox.<br>
+Click the <strong>Start using your sandbox</strong> button to launch the sandbox.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/devsandbox-start.png" alt="devsandbox start">
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>DevSandbox</strong> to log into your sandbox.</p>
+</li>
+<li>
+<p>You are redirected to the <em>Developer Perspective</em> of your sandbox OpenShift environment. Feel free to take or skip the <em>Get Started</em> tour.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/devsandbox-topology.png" alt="devsandbox topology">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="connectopenshiftstreams"><a class="anchor" href="#connectopenshiftstreams"></a>Connect the OpenShift Streams for Apache Kafka instance to your OpenShift project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this part of the workshop you connect your Red Hat OpenShift Streams for Apache Kafka instance to your OpenShift project. This can be done from the Developer perspective on the OpenShift console.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a browser window, navigate to the <em>Developer Perspective</em> of your sandbox OpenShift environment.</p>
+</li>
+<li>
+<p>In the Developer perspective, select the <strong>+Add</strong> view. Locate the <strong>Developer Catalog</strong> card with the <strong>Managed Services</strong> entry</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift-console-developer-catalog.png" alt="openshift console developer catalog">
+</div>
+</div>
+</li>
+<li>
+<p>Click the <strong>Managed Services</strong> link. This opens the Managed Services page, which has a card for <strong>Red Hat OpenShift Application Services</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift-console-application-services.png" alt="openshift console application services">
+</div>
+</div>
+</li>
+<li>
+<p>In order to discover the managed services you are entitled to, you need to unlock the functionality with a token obtained from <a href="https://console.redhat.com">console.redhat.com</a>.<br>
+Open a new browser tab and navigate to <a href="https://console.redhat.com/openshift/token">console.redhat.com/openshift/token</a>. Click on <strong>Load token</strong> in the <strong>Connect with offline token</strong> box. Copy the generated API token.</p>
+</li>
+<li>
+<p>Go back to the browser tab with the OpenShift console, and click the <strong>Red Hat OpenShift Application Services</strong> card. Paste the API token value in the <strong>API Token</strong> field. Click <strong>Connect</strong>.<br>
+You are redirected back to the <strong>Managed Services</strong> page, which shows now a card for <strong>Red Hat OpenShift Streams for Apache Kafka</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift-console-rhosak.png" alt="openshift console rhosak">
+</div>
+</div>
+</li>
+<li>
+<p>Click the <strong>Red Hat OpenShift Streams for Apache Kafka</strong> card, and click <strong>Connect</strong>. This opens a page which shows the Kafka instances that you can connect to. Select the entry corresponding to the Kafka instance you created previously. Click <strong>Next</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift-console-rhosak-connect.png" alt="openshift console rhosak connect">
+</div>
+</div>
+</li>
+<li>
+<p>You are redirected to the <strong>Topology View</strong> of the Developer perspective, which now shows an entry for the managed Kafka instance.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift-console-topology-rhosak.png" alt="openshift console topology rhosak">
+</div>
+</div>
+</li>
+<li>
+<p>The entry is backed by a <code>KafkaConnection</code> custom resource created by the OpenShift Application Services operator. To see the details of the KafkaConnection resource, click on the resource in the Topology view, and in the Details window, select <strong>Edit KafkaConnection</strong> to see the YAML structure of the custom resource.<br>
+Notice that the YAML structure contains the bootstrap URL to the Kafka broker, as well as a reference to a secret containing the data of a service account, named <code>rh-cloud-services-service-account</code>.</p>
+</li>
+<li>
+<p>As part of connecting to the managed Kafka instance, a service account is created. On the <strong>Service Accounts</strong> page of the <strong>Application and Data Services &#8594; Service Accounts</strong> page of the <a href="https://console.redhat.com">console.redhat.com</a> console, check that a service account was created by the OpenShift Application Services operator. Look for a service account with a name like <code>rhoas-operator-xxx</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You have successfully connected your OpenShift Streams for Apache Kafka service to your OpenShift cluster. You are now ready to connect your applications to the Kafka instance using Service Binding.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="01-getting-started.html">1. Getting Started with OpenShift Streams for Apache Kafka</a></span>
+  <span class="next"><a href="03-bind-quarkus-application.html">3. Binding a Quarkus application to OpenShift Streams for Apache Kafka</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../../_/js/vendor/clipboard.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
